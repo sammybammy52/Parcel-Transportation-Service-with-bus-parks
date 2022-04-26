@@ -1,0 +1,217 @@
+<div class="delivery_locations" id="delivery_locations">
+    <div class="location">
+        <h5>New Location</h5>
+        <p>State State <select name="dto_state[]" id="dto_state" class="form-select" style="padding: 12px; border: 1px solid #aaaaaa; border-radius: 0;">
+            <option value="" selected="selected">States</option>
+            <option value="Abuja">Abuja</option>
+            <option value="Abia">Abia</option>
+            <option value="Adamawa">Adamawa</option>
+            <option value="Akwa Ibom">Akwa Ibom</option>
+            <option value="Anambra">Anambra</option>
+            <option value="Bauchi">Bauchi</option>
+            <option value="Bayelsa">Bayelsa</option>
+            <option value="Benue">Benue</option>
+            <option value="Borno">Borno</option>
+            <option value="Cross River">Cross River</option>
+            <option value="Delta">Delta</option>
+            <option value="Ebonyi">Ebonyi</option>
+            <option value="Edo">Edo</option>
+            <option value="Ekiti">Ekiti</option>
+            <option value="Enugu">Enugu</option>
+            <option value="Gombe">Gombe</option>
+            <option value="Imo">Imo</option>
+            <option value="Jigawa">Jigawa</option>
+            <option value="Kaduna">Kaduna</option>
+            <option value="Kano">Kano</option>
+            <option value="Katsina">Katsina</option>
+            <option value="Kebbi">Kebbi</option>
+            <option value="Kogi">Kogi</option>
+            <option value="Kwara">Kwara</option>
+            <option value="Lagos">Lagos</option>
+            <option value="Nassarawa">Nassarawa</option>
+            <option value="Niger">Niger</option>
+            <option value="Ogun">Ogun</option>
+            <option value="Ondo">Ondo</option>
+            <option value="Osun">Osun</option>
+            <option value="Oyo">Oyo</option>
+            <option value="Plateau">Plateau</option>
+            <option value="Rivers">Rivers</option>
+            <option value="Sokoto">Sokoto</option>
+            <option value="Taraba">Taraba</option>
+            <option value="Yobe">Yobe</option>
+            <option value="Zamfara">Zamfara</option>
+        </select></p>
+
+        <p>Select LGA <select name="dto_lga[]" id="dto_lga" class="form-select" style="padding: 12px; border: 1px solid #aaaaaa; border-radius: 0;">
+                <option value="">Select State</option>
+        </select></p>
+        
+
+        <p>Park Name<input type="text" placeholder="Park Name" oninput="this.className = ''" name="dto_park_name[]"></p>
+        <p>Handler<input type="number" placeholder="Phone number of Attendant" oninput="this.className = ''" name="dto_handler1[]"></p>
+    </div>
+
+
+
+
+</div>    
+
+<div class="addNew text-dark rounded-pill col-3 m-2" style="display: inline;" id="addNew">
+    <center>Add new location <img src="add.png"></center>
+</div>
+
+<script>
+    var delivery_locations = document.getElementById('delivery_locations');
+    var addNew = document.getElementById('addNew');
+
+    addNew.addEventListener('click', function() {
+        const newitem = document.createElement('div');
+
+
+        newitem.innerHTML = `<h5>New Location</h5>
+                            <p>State State <select name="dto_state[]" id="dto_state" class="form-select" style="padding: 12px; border: 1px solid #aaaaaa; border-radius: 0;">
+                                <option value="" selected="selected">States</option>
+                                <option value="Abuja">Abuja</option>
+                                <option value="Abia">Abia</option>
+                                <option value="Adamawa">Adamawa</option>
+                                <option value="Akwa Ibom">Akwa Ibom</option>
+                                <option value="Anambra">Anambra</option>
+                                <option value="Bauchi">Bauchi</option>
+                                <option value="Bayelsa">Bayelsa</option>
+                                <option value="Benue">Benue</option>
+                                <option value="Borno">Borno</option>
+                                <option value="Cross River">Cross River</option>
+                                <option value="Delta">Delta</option>
+                                <option value="Ebonyi">Ebonyi</option>
+                                <option value="Edo">Edo</option>
+                                <option value="Ekiti">Ekiti</option>
+                                <option value="Enugu">Enugu</option>
+                                <option value="Gombe">Gombe</option>
+                                <option value="Imo">Imo</option>
+                                <option value="Jigawa">Jigawa</option>
+                                <option value="Kaduna">Kaduna</option>
+                                <option value="Kano">Kano</option>
+                                <option value="Katsina">Katsina</option>
+                                <option value="Kebbi">Kebbi</option>
+                                <option value="Kogi">Kogi</option>
+                                <option value="Kwara">Kwara</option>
+                                <option value="Lagos">Lagos</option>
+                                <option value="Nassarawa">Nassarawa</option>
+                                <option value="Niger">Niger</option>
+                                <option value="Ogun">Ogun</option>
+                                <option value="Ondo">Ondo</option>
+                                <option value="Osun">Osun</option>
+                                <option value="Oyo">Oyo</option>
+                                <option value="Plateau">Plateau</option>
+                                <option value="Rivers">Rivers</option>
+                                <option value="Sokoto">Sokoto</option>
+                                <option value="Taraba">Taraba</option>
+                                <option value="Yobe">Yobe</option>
+                                <option value="Zamfara">Zamfara</option>
+                            </select></p>
+                            
+                            <p>Park Name<input type="text" placeholder="Park Name" oninput="this.className = ''" name="dto_park_name[]"></p>
+                            <p>Handler<input type="number" placeholder="Phone number of Attendant" oninput="this.className = ''" name="dto_handler1[]"></p>`;
+
+        newitem.classList.add('location');
+
+        delivery_locations.appendChild(newitem);
+    })
+</script>
+
+
+
+<script>
+    //your javascript goes here
+    var currentTab = 0;
+    document.addEventListener("DOMContentLoaded", function(event) {
+
+
+        showTab(currentTab);
+
+    });
+
+    function showTab(n) {
+        var x = document.getElementsByClassName("tab");
+        x[n].style.display = "block";
+        if (n == 0) {
+            document.getElementById("prevBtn").style.display = "none";
+        } else {
+            document.getElementById("prevBtn").style.display = "inline";
+        }
+        if (n == (x.length - 1)) {
+            document.getElementById("nextBtn").style.display = "none";
+            document.getElementById('nextprevious').innerHTML = `<center> <button type="submit" name="submit" class="btn btn-primary">Submit Form</button> </center>`;
+
+
+        } else {
+            document.getElementById("nextBtn").innerHTML = "Next";
+        }
+        fixStepIndicator(n)
+    }
+
+    function nextPrev(n) {
+        var x = document.getElementsByClassName("tab");
+        if (n == 1 && !validateForm()) return false;
+        x[currentTab].style.display = "none";
+        currentTab = currentTab + n;
+        if (currentTab >= x.length) {
+            // document.getElementById("regForm").submit();
+            // return false;
+            //alert("sdf");
+            document.getElementById("nextprevious").style.display = "none";
+            document.getElementById("all-steps").style.display = "none";
+            document.getElementById("register").style.display = "none";
+            document.getElementById("text-message").style.display = "block";
+
+
+
+
+        }
+        showTab(currentTab);
+    }
+
+    function validateForm() {
+        var x, y, i, valid = true;
+        x = document.getElementsByClassName("tab");
+        y = x[currentTab].getElementsByTagName("input");
+        for (i = 0; i < y.length; i++) {
+            if (y[i].value == "") {
+                y[i].className += " invalid";
+                valid = false;
+            }
+        }
+        if (valid) {
+            document.getElementsByClassName("step")[currentTab].className += " finish";
+        }
+        return valid;
+    }
+
+    function fixStepIndicator(n) {
+        var i, x = document.getElementsByClassName("step");
+        for (i = 0; i < x.length; i++) {
+            x[i].className = x[i].className.replace(" active", "");
+        }
+        x[n].className += " active";
+    }
+
+
+
+    $('#dto_state').on('change', function() {
+				var state_id = this.value;
+				$.ajax({
+					url: "/loginregisteradmin/sellerdash/lga.php",
+					type: "POST",
+					data: {
+						state_id: state_id
+					},
+					cache: false,
+					success: function(result) {
+						console.log(result);
+						$("#dto_lga").html(result);
+
+
+					}
+				});
+			});
+</script>
