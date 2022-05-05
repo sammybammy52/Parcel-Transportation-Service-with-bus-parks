@@ -8,48 +8,53 @@
   <title>Seller Login</title>
 
   <!-- Bootstrap v4.4.1 -->
-  <link rel="stylesheet" type="text/css" href="vendor/bootstrap/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="assets/dist/css/bootstrap.css">
 
   <!-- favicon -->
   <link rel="shortcut icon" type="image/x-icon" href="images/favicon.jpg">
 </head>
 
 <body class="bg-light">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-4 offset-md-4">
-        <div class="text-center mt-5">
-          <img class="mb-2" src="images/logo.jpg" alt="" width="100" height="100">
+
+  <section class="vh-100" style="background-color: #e91e63;">
+    <div class="container py-5 h-100">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+          <div class="card shadow-2-strong" style="border-radius: 1rem;">
+            <div class="card-body p-5">
+  
+              <h2 class="mb-5 text-center">Sign in</h2>
+  
+              <form id="login_form">
+                <span id="login_error_message"></span>
+                <div class=" form-outline mb-3">
+                  <label for="username">Username </label>
+                  <input type="text" class="form-control" id="username" name="username" placeholder="Enter username"
+                    maxlength="50">
+                  <div id="username_error_message" class="text-danger"></div>
+                </div>
+                <div class="form-outline mb-4">
+                  <label for="password">Password </label>
+                  <input type="password" class="form-control" id="password" name="password" placeholder="Enter password"
+                    maxlength="50">
+                  <div id="password_error_message" class="text-danger"></div>
+                </div>
+                
+                <input type="hidden" name="action" id="action" value="login_seller">
+                <button class="btn btn-primary btn-block" type="submit" style="width: 100%;">Login</button>
+                <div class="mt-2">
+                  <p><a href="register_seller.html">Do not have an account yet? Register.</a></p>
+                </div>
+              </form>
+  
+            </div>
+          </div>
         </div>
-        <h1 class="text-center">Seller Login</h1>
-        <hr>
-        <form id="login_form">
-          <span id="login_error_message"></span>
-          <div class="mb-3">
-            <label for="username">Username *</label>
-            <input type="text" class="form-control" id="username" name="username" placeholder="Enter username"
-              maxlength="50">
-            <div id="username_error_message" class="text-danger"></div>
-          </div>
-          <div class="mb-3">
-            <label for="password">Password *</label>
-            <input type="password" class="form-control" id="password" name="password" placeholder="Enter password"
-              maxlength="50">
-            <div id="password_error_message" class="text-danger"></div>
-          </div>
-          <hr class="mb-4">
-          <input type="hidden" name="action" id="action" value="login_seller">
-          <button class="btn btn-primary btn-lg btn-block" type="submit">Login</button>
-          <div class="mt-2">
-            <p><a href="register.html">Do not have an account yet? Register.</a></p>
-          </div>
-        </form>
-        <p class="mt-5 mb-3 text-muted text-center">&copy; 2020 <a target="blank"
-            href="http://www.egavilanmedia.com/">egavilanmedia.com</p>
       </div>
-      <div class="col-sm-4"></div>
     </div>
-  </div>
+  </section>
+  
+
 
   <!-- JQuery-3.4.1 -->
   <script src="vendor/jquery-3.4.1.min.js"></script>

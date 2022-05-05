@@ -2,22 +2,35 @@
 
 session_start();
 
+
+function validate($data){
+
+    $data = trim($data);
+
+    $data = stripslashes($data);
+
+    $data = htmlspecialchars($data);
+
+    return $data;
+
+}
+
 include 'connection.php';
 
 if (isset($_POST['order'])) {
-    $package_weight = $_POST['package_weight'];
-    $quantity = $_POST['quantity'];
-    $length = $_POST['length'];
-    $width = $_POST['width'];
-    $height = $_POST['height'];
-    $dropoff_park = $_POST['dropoff_park'];
-    $seller_number = $_POST['seller_number'];
-    $recipient_number = $_POST['recipient_number'];
+    $package_weight = validate($_POST['package_weight']);
+    $quantity = validate($_POST['quantity']);
+    $length = validate($_POST['length']);
+    $width = validate($_POST['width']);
+    $height = validate($_POST['height']);
+    $dropoff_park = validate($_POST['dropoff_park']);
+    $seller_number = validate($_POST['seller_number']);
+    $recipient_number = validate($_POST['recipient_number']);
     $order_number = date('Ymd') . str_pad(mt_rand(1, 99999), 5, '0', STR_PAD_LEFT);
     $seller_id = $_SESSION['user_id'];
-    $dstate = $_POST['dstate'];
-    $dlga = $_POST['dlga'];
-    $dpark = $_POST['dpark'];
+    $dstate = validate($_POST['dstate']);
+    $dlga = validate($_POST['dlga']);
+    $dpark = validate($_POST['dpark']);
     $order_status = "Pending";
 
     //$order_type = "Local";

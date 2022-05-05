@@ -1,5 +1,16 @@
 <?php
 
+function validate($data){
+
+    $data = trim($data);
+
+    $data = stripslashes($data);
+
+    $data = htmlspecialchars($data);
+
+    return $data;
+
+ }
 
 //saving to the parks table
 
@@ -8,21 +19,21 @@ function savetoparks()
 
     include '../connection.php';
 
-    $park_name = $_POST['park_name'];
-    $address = $_POST['address'];
-    $state = $_POST['state'];
-    $lga = $_POST['lga'];
-    $name1 = $_POST['name1'];
-    $handler1 = $_POST['handler1'];
-    $name2 = $_POST['name2'];
-    $handler2 = $_POST['handler2'];
-    $name3 = $_POST['name3'];
-    $handler3 = $_POST['handler3'];
-    $latitude = $_POST['latitude'];
-    $longitude = $_POST['longitude'];
+    $park_name = validate($_POST['park_name']);
+    $address = validate($_POST['address']);
+    $state = validate($_POST['state']);
+    $lga = validate($_POST['lga']);
+    $name1 = validate($_POST['name1']);
+    $handler1 = validate($_POST['handler1']);
+    $name2 = validate($_POST['name2']);
+    $handler2 = validate($_POST['handler2']);
+    $name3 = validate($_POST['name3']);
+    $handler3 = validate($_POST['handler3']);
+    $latitude = validate($_POST['latitude']);
+    $longitude = validate($_POST['longitude']);
 
-    $park_chairman = $_POST['park_chairman'];
-    $pc_number = $_POST['pc_number'];
+    $park_chairman = validate($_POST['park_chairman']);
+    $pc_number = validate($_POST['pc_number']);
 
 
     $sql = "insert into `parks` (park_name,address,state_id,lga_id,name1,handler1,name2,handler2,name3,handler3,park_chairman,pc_number,latitude,longitude) values ('$park_name','$address',$state,$lga,'$name1','$handler1','$name2','$handler2','$name3','$handler3','$park_chairman','$pc_number','$latitude','$longitude')";

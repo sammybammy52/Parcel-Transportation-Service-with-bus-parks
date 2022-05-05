@@ -1,3 +1,15 @@
+<?php
+
+session_start();
+
+if (!isset($_SESSION["username"])) {
+  header('location: ../login_seller.html');
+}
+
+?>
+
+
+
 <aside class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3   bg-gradient-dark" id="sidenav-main">
     <div class="sidenav-header">
       <i class="fas fa-times p-3 cursor-pointer text-white opacity-5 position-absolute end-0 top-0 d-none d-xl-none" aria-hidden="true" id="iconSidenav"></i>
@@ -76,9 +88,9 @@
           </div>
           <ul class="navbar-nav  justify-content-end">
             <li class="nav-item d-flex align-items-center">
-              <a href="javascript:;" class="nav-link text-body font-weight-bold px-0">
+              <a href="../logout_seller.php" class="nav-link text-body font-weight-bold px-0">
                 <i class="fa fa-user me-sm-1"></i>
-                <span class="d-sm-inline d-none">Sign In</span>
+                <span class="d-sm-inline d-none">Log Out</span>
               </a>
             </li>
             <li class="nav-item d-xl-none ps-3 d-flex align-items-center">
