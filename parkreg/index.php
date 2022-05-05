@@ -1,3 +1,16 @@
+
+<?php
+
+session_start();
+
+if (!isset($_SESSION["handler1"])) {
+  header('location: login_handler.php');
+}
+
+?>
+
+
+
 <?php
 
 function getstates()

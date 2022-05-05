@@ -1,6 +1,16 @@
 <?php
 
+function validate($data){
 
+    $data = trim($data);
+  
+    $data = stripslashes($data);
+  
+    $data = htmlspecialchars($data);
+  
+    return $data;
+  
+  }
 
 function getparks()
 {
@@ -109,11 +119,11 @@ function nominate_by_admin()
 
     include '../connection.php';
 
-    $state_id = $_POST['dto_state'];
-    $lga_id = $_POST['dto_lga'];
-    $park_name = $_POST['dto_park_name'];
-    $name1 = $_POST['dto_name1'];
-    $handler1 = $_POST['dto_handler1'];
+    $state_id = validate($_POST['dto_state']);
+    $lga_id = validate($_POST['dto_lga']);
+    $park_name = validate($_POST['dto_park_name']);
+    $name1 = validate($_POST['dto_name1']);
+    $handler1 = validate($_POST['dto_handler1']);
     $ref1 = "Admin";
 
     $sql = "INSERT into `temp` (state_id,lga_id,park_name,name1,handler1,ref1) VALUES ($state_id, $lga_id, '$park_name', '$name1', '$handler1','$ref1')";

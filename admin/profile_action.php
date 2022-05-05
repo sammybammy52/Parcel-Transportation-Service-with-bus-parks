@@ -6,13 +6,25 @@ include "../connection.php";
 
 session_start();
 
+function validate($data){
+
+  $data = trim($data);
+
+  $data = stripslashes($data);
+
+  $data = htmlspecialchars($data);
+
+  return $data;
+
+}
+
 $output = '';
 if(isset($_POST["action"])){
 
   // Admin login
   if($_POST["action"] == "login_admin"){
 
-    $username = $_POST['username'];
+    $username = validate($_POST['username']);
     $password = sha1($_POST['password']);	
   
     $sql = "SELECT * FROM tbl_admin WHERE username = '$username' AND password = '$password'";
@@ -66,10 +78,10 @@ if(isset($_POST["action"])){
 
     $id = $_SESSION['user_id'];
 
-    $fullname = $_POST['fullname'];
-    $username = $_POST['username'];
-    $email = $_POST['email'];
-    $gender = $_POST['gender'];
+    $fullname = validate($_POST['fullname']);
+    $username = validate($_POST['username']);
+    $email = validate($_POST['email']);
+    $gender = validate($_POST['gender']);
 
     $sql = "UPDATE tbl_admin SET fullname = '$fullname',
                               username = '$username',
