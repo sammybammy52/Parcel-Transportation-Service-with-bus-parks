@@ -54,16 +54,16 @@
                     </div>
                     <div class="card-body px-0 pb-2 position-relative">
                         <div class="row border border-secondary border-2 rounded p-2 m-3">
-                            <div class="col-8 mt-3">
+                            <div class="col-7 mt-3">
 
                                 <h5>Make a Delivery</h5>
                                 <p>Place a delivery within or outside your Current State</p>
 
                             </div>
 
-                            <div class="col-4 mt-3">
+                            <div class="col-5 mt-3">
                                 <form action="tables.php" method="GET">
-                                    <button type="submit" class="btn btn-primary" style="width: 100%;">Make Order</button>
+                                    <button type="submit" class="btn btn-primary" style="width: 100%;">next</button>
                                 </form>
 
                                 
