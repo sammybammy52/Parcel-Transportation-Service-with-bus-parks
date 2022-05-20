@@ -1,6 +1,9 @@
 <?php
 
 $product_id = $_GET['orderid'];
+$dpark = $_GET['dpark'];
+
+
 
 ?>
 
@@ -27,6 +30,7 @@ $product_id = $_GET['orderid'];
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
     <!-- CSS Files -->
     <link id="pagestyle" href="assets/css/material-dashboard.css?v=3.0.0" rel="stylesheet" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 
 <body class="g-sidenav-show  bg-gray-200">
@@ -56,17 +60,17 @@ $product_id = $_GET['orderid'];
                         if ($result) {
                             $row = mysqli_fetch_assoc($result);
 
-                            $product_name = $row['product_name'];
+                            $package_weight = $row['package_weight'];
 
                             $quantity = $row['quantity'];
 
-                            $product_description = $row['product_description'];
+                            $length = $row['length'];
 
-                            $pickup_address = $row['pickup_address'];
+                            $width = $row['width'];
+
+                            $height = $row['height'];
 
                             $seller_number = $row['seller_number'];
-
-                            $delivery_address = $row['delivery_address'];
 
                             $recipient_number = $row['recipient_number'];
 
@@ -74,11 +78,11 @@ $product_id = $_GET['orderid'];
 
                             $order_status = $row['order_status'];
 
-                            $courier_name = $row['courier_name'];
+                            $state = $row['dstate'];
 
-                            $couriernumber = $row['courier_number'];
+                            $lga = $row['dlga'];
 
-                            $transporters_number = $row['transporters_number'];
+                            $park = $row['dpark'];
                         } else {
                             die(mysqli_error($conn));
                         }
@@ -98,7 +102,9 @@ $product_id = $_GET['orderid'];
                             <div class="row">
 
                                 <div class="alert alert-dark alert-dismissible text-white" role="alert">
-                                    <span class="text-sm "> <h5 class="text-white">The Courier's number is <?php echo $couriernumber;?>. it is recommended to call them to get a faster response.</h5> </span>
+                                    <span class="text-sm ">
+                                        <h5 class="text-white">The Handlers Phone Numbers are:<div id="nums"> <h5 id="handler1" class="text-white"></h5> <h5 id="handler2" class="text-white"></h5>  </div> it is recommended to call them if you need more questions about dropping off your Parcel.</h5>
+                                    </span>
                                     <button type="button" class="btn-close text-lg py-3 opacity-10" data-bs-dismiss="alert" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                     </button>
@@ -107,10 +113,10 @@ $product_id = $_GET['orderid'];
 
                             <div class="row">
                                 <div class="col-6">
-                                    <h5>Product Name:</h5>
+                                    <h5>package Weight:</h5>
                                 </div>
                                 <div class="col-6">
-                                    <h5><?php echo $product_name ?></h5>
+                                    <h5><?php echo $package_weight ?></h5>
                                 </div>
                             </div>
 
@@ -125,19 +131,28 @@ $product_id = $_GET['orderid'];
 
                             <div class="row">
                                 <div class="col-6">
-                                    <h5>Product Description:</h5>
+                                    <h5>length:</h5>
                                 </div>
                                 <div class="col-6">
-                                    <h5><?php echo $product_description ?></h5>
+                                    <h5><?php echo $length ?></h5>
                                 </div>
                             </div>
 
                             <div class="row">
                                 <div class="col-6">
-                                    <h5>Pickup address:</h5>
+                                    <h5>width:</h5>
                                 </div>
                                 <div class="col-6">
-                                    <h5><?php echo $pickup_address ?></h5>
+                                    <h5><?php echo $width ?></h5>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-6">
+                                    <h5>height:</h5>
+                                </div>
+                                <div class="col-6">
+                                    <h5><?php echo $height ?></h5>
                                 </div>
                             </div>
 
@@ -150,14 +165,7 @@ $product_id = $_GET['orderid'];
                                 </div>
                             </div>
 
-                            <div class="row">
-                                <div class="col-6">
-                                    <h5>Delivery Address:</h5>
-                                </div>
-                                <div class="col-6">
-                                    <h5><?php echo $delivery_address ?></h5>
-                                </div>
-                            </div>
+
 
                             <div class="row">
                                 <div class="col-6">
@@ -179,22 +187,30 @@ $product_id = $_GET['orderid'];
 
                             <div class="row">
                                 <div class="col-6">
-                                    <h5> Courier:</h5>
+                                    <h5> Destination Park:</h5>
                                 </div>
                                 <div class="col-6">
-                                    <h5><?php echo $courier_name ?></h5>
+                                    <h5 id="park"></h5>
                                 </div>
                             </div>
-                            
-                            <div class="row">
-                                <?php
-                                if ($transporters_number!=NULL) {
-                                    echo"<h5>The Transporters number is $transporters_number</h5>";
-                                }
 
-                                ?>
+                            <div class="row">
+                                <div class="col-6">
+                                    <h5> Destination LGA:</h5>
+                                </div>
+                                <div class="col-6">
+                                    <h5 id="lga"></h5>
+                                </div>
                             </div>
 
+                            <div class="row">
+                                <div class="col-6">
+                                    <h5> Destination State:</h5>
+                                </div>
+                                <div class="col-6">
+                                    <h5 id="state"></h5>
+                                </div>
+                            </div>
 
 
                             <div class="row">
@@ -202,17 +218,17 @@ $product_id = $_GET['orderid'];
 
                                 if ($order_status == "Pending") {
                                     echo '<div class="alert alert-warning alert-dismissible text-white" role="alert">
-                                    <span class="text-sm"> <h5 class="text-white">This Order is pending</h5></span>
+                                    <span class="text-sm"> <h5 class="text-white">This Parcel has not been documented, please take it to the park you have chosen</h5></span>
                                     
                                   </div>';
                                 } elseif ($order_status == "Accepted") {
                                     echo '<div class="alert alert-success alert-dismissible text-white" role="alert">
-                                    <span class="text-sm"><h5 class="text-white">This order has been accepted by the Courier</h5></span>
+                                    <span class="text-sm"><h5 class="text-white">This Package has been documented and is in transit</h5></span>
                                     
                                   </div>';
                                 } elseif ($order_status == "Rejected") {
                                     echo '<div class="alert alert-danger alert-dismissible text-white" role="alert">
-                                    <span class="text-sm"><h5 class="text-white">This order has been Rejected by the Courier</h5></span>
+                                    <span class="text-sm"><h5 class="text-white">This order has been Rejected</h5></span>
                                     
                                   </div>';
                                 } else {
@@ -225,7 +241,11 @@ $product_id = $_GET['orderid'];
 
                             </div>
 
-                            
+
+
+
+
+
 
                         </div>
 
@@ -346,6 +366,43 @@ $product_id = $_GET['orderid'];
             </div>
         </div>
     </div>
+
+    <script>
+        $(document).ready(function() {
+
+
+            var dpark = <?php echo $dpark; ?>;
+            $.ajax({
+                url: "gethandlernumber.php",
+                type: "POST",
+                data: {
+                    dpark: dpark
+                },
+                cache: false,
+                success: function(result) {
+                    var final = JSON.parse(result);
+                    console.log(final);
+                   // $("#nums").html(result);
+                   $("#park").html(final.park_name);
+
+                   $("#lga").html(final.lga);
+
+                   $("#state").html(final.state);
+
+                   $("#handler1").html(final.handler1);
+                   $("#handler2").html(final.handler2);
+            
+
+                }
+            });
+
+
+
+
+        });
+    </script>
+
+    
     <!--   Core JS Files   -->
     <script src="assets/js/core/popper.min.js"></script>
     <script src="assets/js/core/bootstrap.min.js"></script>

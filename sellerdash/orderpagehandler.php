@@ -42,7 +42,7 @@ if (isset($_POST['order'])) {
 
     if ($result) {
         $mssg = '<div class="alert alert-success alert-dismissible text-white ms-3 me-3" role="alert">
-                                    <span class="text-sm">Order Successfully placed you will be notified when the courier accepts the order or not <br> Your order number is ' . $order_number . ' <br> <a href="allorders.php" class="alert-link text-white">CLICK TO SEE ALL ORDERS</a>. </span>
+                                    <span class="text-sm">Order Successfully placed. Please take your package to the park you have chosen <br> Your order number is ' . $order_number . ' <br> <a href="allorders.php" class="alert-link text-white">CLICK TO SEE ALL ORDERS</a>. </span>
                                     <button type="button" class="btn-close text-lg py-3 opacity-10" data-bs-dismiss="alert" aria-label="Close">
                                       <span aria-hidden="true">&times;</span>
                                     </button>

@@ -57,6 +57,7 @@ session_start();
                 $product_name = $row['product_name'];
                 $product_id = $row['id'];
                 $order_number = $row['order_number'];
+                $dpark = $row['dpark'];
 
 
                 echo '<div class="row m-3 border border-secondary border-2 rounded">
@@ -67,6 +68,7 @@ session_start();
                 <div class="col-4 d-grid gap-2 mt-3">
                   <form action="orderdetails.php" method="GET">
                   <input type="hidden" name="orderid" value="'.$product_id.'">
+                  <input type="hidden" name="dpark" value="'.$dpark.'">
                   <button type="submit" class="btn btn-primary" style="width: 100%;">View Details</button>
                   </form>
                   
