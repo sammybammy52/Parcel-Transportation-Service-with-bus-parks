@@ -1,3 +1,13 @@
+<?php
+
+session_start();
+
+if (!isset($_SESSION["username"])) {
+  header('location: ../login_seller.html');
+}
+
+?>
+
 <!--
 =========================================================
 * Material Dashboard 2 - v3.0.0
@@ -13,10 +23,7 @@
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 -->
 
-<?php
-include 'sessions.php';
 
-?>
 <!DOCTYPE html>
 <html lang="en">
 

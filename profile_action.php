@@ -1,10 +1,10 @@
 <?php
-
+session_start();
 //profile_action.php
 
 include "connection.php";
 
-session_start();
+
 
 $output = '';
 if(isset($_POST["action"])){

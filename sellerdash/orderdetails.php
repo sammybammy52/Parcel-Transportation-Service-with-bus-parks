@@ -1,5 +1,12 @@
 <?php
-include 'sessions.php';
+
+
+session_start();
+
+if (!isset($_SESSION["username"])) {
+  header('location: ../login_seller.html');
+}
+
 
 $product_id = $_GET['orderid'];
 $dpark = $_GET['dpark'];

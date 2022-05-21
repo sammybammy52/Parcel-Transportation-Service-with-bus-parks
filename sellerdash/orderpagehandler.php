@@ -1,6 +1,11 @@
 <?php
 
-include 'sessions.php';
+session_start();
+
+if (!isset($_SESSION["username"])) {
+  header('location: ../login_seller.html');
+}
+
 
 
 function validate($data){

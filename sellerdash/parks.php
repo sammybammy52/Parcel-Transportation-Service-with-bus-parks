@@ -1,5 +1,11 @@
 <?php
-    include 'sessions.php';
+
+    session_start();
+    
+    if (!isset($_SESSION["username"])) {
+      header('location: ../login_seller.html');
+    }
+
     require "connection.php";
     $lg_id = $_POST["lg_id"];
     $result = mysqli_query($conn,"SELECT * FROM parks where lga_id = $lg_id ORDER BY park_name ASC");
