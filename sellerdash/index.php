@@ -14,7 +14,7 @@
 -->
 
 <?php
-session_start();
+include 'sessions.php';
 
 ?>
 <!DOCTYPE html>

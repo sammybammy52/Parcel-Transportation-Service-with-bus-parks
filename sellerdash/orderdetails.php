@@ -1,4 +1,5 @@
 <?php
+include 'sessions.php';
 
 $product_id = $_GET['orderid'];
 $dpark = $_GET['dpark'];

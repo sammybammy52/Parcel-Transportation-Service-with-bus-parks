@@ -1,4 +1,6 @@
 <?php
+include 'sessions.php';
+
 $drop_park = $_GET['park'];
 ?>
 <!DOCTYPE html>

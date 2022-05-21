@@ -1,4 +1,5 @@
 <?php
+    include 'sessions.php';
 
     $dpark = $_POST['dpark'];
 

@@ -1,4 +1,6 @@
 <?php
+
+    include 'sessions.php';
     require_once "connection.php";
     $drop_park = $_POST["drop_park"];
     
